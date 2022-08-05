@@ -1,9 +1,10 @@
 using WorkerService1;
+using WorkerService1.Helpers;
 
 IHost host = Host.CreateDefaultBuilder(args)
-    .ConfigureServices(services =>
+    .ConfigureServices((hostCxt, services) =>
     {
-        services.AddHostedService<Worker>();
+        services.AddDependencyInjection();
     })
     .Build();
 

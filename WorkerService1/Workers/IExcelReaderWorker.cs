@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WorkerService1.APIServices
+namespace WorkerService1.Workers
 {
-    public interface ITransportController
+    public interface IExcelReaderWorker
     {
-        public void PostTransport();
+        Task DoWork(CancellationToken cancellationToken);
     }
 }

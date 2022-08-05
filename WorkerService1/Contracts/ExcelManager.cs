@@ -10,7 +10,7 @@ namespace WorkerService1.Contracts
 {
     public class ExcelManager : IExcelManager
     {
-        public IEnumerable<TransportExcelDto> GetTransportsExcel(string excelFile)
+        public List<TransportExcelDto> GetTransportExcelList(string excelFile)
         {
             List<TransportExcelDto> transports = new List<TransportExcelDto>();
 
@@ -32,9 +32,10 @@ namespace WorkerService1.Contracts
                 transportExcelDto.DropOffLocationCity = row.Cell(10).GetString();
                 transportExcelDto.DropOffLocationProvince = row.Cell(11).GetString();
                 transportExcelDto.DropOffLocationPostalCode = row.Cell(12).GetString();
-                transportExcelDto.RequestedDate = row.Cell(13).GetDateTime();
-                transportExcelDto.ReturnDate = row.Cell(14).GetDateTime();
-                transportExcelDto.Observations = row.Cell(15).GetString();
+                transportExcelDto.Observations = row.Cell(13).GetString();
+                transportExcelDto.RequestedDate = row.Cell(14).GetDateTime();
+                transportExcelDto.ReturnDate = row.Cell(15).GetDateTime();
+                transportExcelDto.ContractId = row.Cell(16).GetString();
 
 
                 transports.Add(transportExcelDto);

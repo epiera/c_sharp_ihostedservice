@@ -9,6 +9,6 @@ namespace WorkerService1.Contracts
 {
     public interface IExcelManager
     {
-        IEnumerable<TransportExcelDto> GetTransportsExcel(string excelFile);
+        List<TransportExcelDto> GetTransportExcelList(string excelFile);
     }
 }
