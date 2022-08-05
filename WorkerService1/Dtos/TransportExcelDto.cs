@@ -21,8 +21,8 @@ namespace WorkerService1.DTO
         public string DropOffLocationProvince { get; set; }
         public string DropOffLocationPostalCode { get; set; }
         public string Observations { get; set; }
-        public DateTime? RequestedDate { get; set; }
-        public DateTime? ReturnDate { get; set; }
+        public DateTimeOffset RequestedDate { get; set; }
+        public DateTimeOffset ReturnDate { get; set; }
         public string ContractId { get; set; }
     }
 }

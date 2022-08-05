@@ -24,9 +24,9 @@ namespace WorkerService1.Workers
 
         public async Task DoWork(CancellationToken cancellationToken)
         {
-            var path = _configuration.GetValue<string>("RutaFicherosGenericos");
-
-            Console.WriteLine("Getting excel files...");
+            var path = _configuration.GetSection("RutaFicherosGenericos").Value;
+            
+            Console.WriteLine($"Getting excel files from {path}");
             // Get files from directory
             IEnumerable<string> excelFiles = Directory.GetFiles(path)
                     .Where(file => new string[] { ".xlsx" }
@@ -37,10 +37,11 @@ namespace WorkerService1.Workers
             var transportsExcelDto = new List<TransportExcelDto>();
 
 
-            Console.WriteLine("Getting tranports from excel files...");
+            
             // Get all transportsExcelDto in all files
             foreach (string excelFile in excelFiles)
             {
+                Console.WriteLine($"Getting tranports from excel file {excelFile}");
                 transportsExcelDto.AddRange(excelManager.GetTransportExcelList(excelFile));
             }
 
@@ -61,7 +62,8 @@ namespace WorkerService1.Workers
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error creating Transport", ex);
+                Console.WriteLine("Error creating Transport");
+                Console.WriteLine(ex.ToString());
             }
             return "ERROR";
         }

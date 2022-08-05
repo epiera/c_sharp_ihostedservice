@@ -33,9 +33,8 @@ namespace WorkerService1.Mappers
             gamApiEntityTransport.IsIndividual = false;
 
             // TODO: Check if is needed -1
-            gamApiEntityTransport.StartDate = DateTime.ParseExact($"{transportExceldto.RequestedDate}", "yyyyMMdd HHmmss", System.Globalization.CultureInfo.InvariantCulture);
-            gamApiEntityTransport.RequestedDate = DateTime.ParseExact($"{transportExceldto.RequestedDate}", "yyyyMMdd HHmmss", System.Globalization.CultureInfo.InvariantCulture);
-
+            gamApiEntityTransport.StartDate = transportExceldto.RequestedDate;
+            gamApiEntityTransport.RequestedDate = transportExceldto.RequestedDate;
             gamApiEntityTransport.PickUpLocation = new LocationDto
             {
                 Type = 0,
